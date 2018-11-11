@@ -1,25 +1,15 @@
 html {
-    font-size: 24px;
-}
+  font-size: 24px; }
 
 .rating {
-    display: flex;
-}
-
-.rating div {
+  display: flex; }
+  .rating:hover > div {
+    background: url("../../images/star-full.svg") !important; }
+  .rating > div {
     height: 1rem;
     width: 1rem;
-    background: url('../../images/star-full.svg');
-}
-
-.rating > .active ~ div {
-    background: url('../../images/star-empty.svg');
-}
-
-.rating:hover div {
-    background: url('../../images/star-full.svg') !important;
-}
-
-.rating > div:hover ~ div {
-    background: url('../../images/star-empty.svg') !important;
-}
+    background: url("../../images/star-full.svg"); }
+    .rating > div:hover ~ div {
+      background: url("../../images/star-empty.svg") !important; }
+    .rating > div.active ~ div {
+      background: url("../../images/star-empty.svg"); }

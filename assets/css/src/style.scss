@@ -1,0 +1,25 @@
+html {
+    font-size: 24px;
+}
+
+.rating {
+    display: flex;
+
+    &:hover >div {
+        background: url('../../images/star-full.svg') !important;
+    }
+
+    >div {
+        height: 1rem;
+        width: 1rem;
+        background: url('../../images/star-full.svg');
+
+        &:hover ~ div {
+            background: url('../../images/star-empty.svg') !important;
+        }
+
+        &.active ~ div {
+            background: url('../../images/star-empty.svg');
+        }
+    }
+}

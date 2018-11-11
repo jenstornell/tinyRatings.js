@@ -10,21 +10,13 @@
 </head>
 <body>
 
-    <div>asdada</div>
+<div>asdada</div>
 
 <div class="rating" data-rating="3" data-rating-enabled="false"></div>
 
 <br>
 
 <div class="rating" data-rating="4" data-rating-enabled="false"></div>
-
-<template id="rating-template">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-</template>
 
 <script src="tinystarratings.js?t=<?= time(); ?>"></script>
 
