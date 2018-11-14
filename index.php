@@ -16,15 +16,25 @@
 
 <br>
 
-<div class="rating" data-rating="4" data-rating-enabled="false"></div>
+<div class="rating haha" data-rating="4"></div>
 
-<script src="tinystarratings.js?t=<?= time(); ?>"></script>
+<input-stars data-is-rating="4"></input-stars>
+
+<script src="assets/js/script.js?t=<?= time(); ?>"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-        tinystarratings.init({
-            'selector': '.rating'
-        });
+document.addEventListener("DOMContentLoaded", function(event) {
+    tinystarratings.init({
+        'selector': '.rating'
+    });
+
+    var element = document.querySelector('.haha');
+    
+    tinystarratings.elementToHtml(element, 4);
+
+    var element = document.querySelectorAll('.haha');
+
+    tinystarratings.clear(element);
 });
 </script>
 
