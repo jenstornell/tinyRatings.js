@@ -1,12 +1,12 @@
-var tinystarratings = (function () {
+var tinyRatings = (function () {
     var fn = {};
+    var o = {};
 
     fn.init = function(options) {
-        fn.options = Object.assign({}, fn.defaults(), options);
-        console.log(fn.options);
-        fn.elements = document.querySelectorAll(fn.options.selector);
+        o = Object.assign({}, fn.defaults(), options);
+        fn.elements = document.querySelectorAll(o.ratingSelector);
 
-        fn.toHtml();
+        fn.convertRatings();
 
         fn.eventClick();
     };
@@ -14,22 +14,33 @@ var tinystarratings = (function () {
     // Defaults
     fn.defaults = function() {
         return {
-            replacement: 'tsr'
+            ratingSelector: '[data-rating]'
         };
     };
 
-    fn.toHtml = function() {
-        var div = document.createElement('div');
+    fn.html = function() {
+        var html = '';
+        for(i=0; i<5; i++) {
+            html += "<div></div>";
+        }
+        return html;
+    };
+
+    fn.convertRatings = function() {
+        var html = fn.html();
+        var htmlElement = new DOMParser().parseFromString(fn.html(), "text/html").body.cloneNode;
+
+        //console.log(htmlStars);
 
         for(i=0; i<fn.elements.length; i++) {
             var element = fn.elements[i];
             var rating = element.dataset.rating;
 
-            for(j=0; j<5; j++) {
-                element.appendChild(div.cloneNode(true));
-            }
+            console.log(htmlElement);
 
-            fn.elementToHtml(element, rating);
+            element.appendChild(htmlElement);
+
+            //fn.elementToHtml(element, rating);
         }
     };
 
@@ -43,7 +54,7 @@ var tinystarratings = (function () {
     };
 
     fn.eventClick = function() {
-        var elements = document.querySelectorAll(fn.options.selector + ' >div');
+        var elements = document.querySelectorAll(o.selector + ' >div');
 
         for(i=0; i<elements.length; i++) {
             var elementStar = elements[i];

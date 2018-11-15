@@ -1,24 +1,24 @@
 html {
   font-size: 24px; }
 
-.rating {
+input-rating {
   display: flex;
   background: red; }
-  .rating:hover > div {
+  input-rating:hover > div {
     background: url("../../images/star-full.svg") !important;
     background-repeat: no-repeat; }
-  .rating > div {
+  input-rating > div {
     background: green;
     height: 1rem;
     width: 1rem;
     background: url("../../images/star-full.svg"); }
-    .rating > div:hover ~ div {
+    input-rating > div:hover ~ div {
       background: url("../../images/star-empty.svg") !important; }
-    .rating > div.active ~ div {
+    input-rating > div.active ~ div {
       background: url("../../images/star-empty.svg"); }
-  .rating[data-rating-enabled="false"] > div:hover ~ div {
+  input-rating[data-rating-enabled="false"] > div:hover ~ div {
     background: url("../../images/star-full.svg") !important; }
-  .rating[data-rating-enabled="false"] > div.active ~ div {
+  input-rating[data-rating-enabled="false"] > div.active ~ div {
     background: url("../../images/star-empty.svg") !important; }
-  .rating[data-rating="0"] > div {
+  input-rating[data-rating="0"] > div {
     background: url("../../images/star-empty.svg"); }

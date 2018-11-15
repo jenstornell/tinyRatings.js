@@ -10,31 +10,27 @@
 </head>
 <body>
 
-<div>asdada</div>
-
 <div class="rating" data-rating="3" data-rating-enabled="false"></div>
 
 <br>
 
-<div class="rating haha" data-rating="4"></div>
-
-<input-stars data-is-rating="4"></input-stars>
+<input-rating data-rating="4"></input-rating>
 
 <script src="assets/js/script.js?t=<?= time(); ?>"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
-    tinystarratings.init({
-        'selector': '.rating'
+    tinyRatings.init({
+        'ratingSelector': '[data-rating]'
     });
 
     var element = document.querySelector('.haha');
     
-    tinystarratings.elementToHtml(element, 4);
+    tinyRatings.set(element, 4);
 
     var element = document.querySelectorAll('.haha');
 
-    tinystarratings.clear(element);
+    tinyRatings.clear(element);
 });
 </script>
 
