@@ -2,11 +2,24 @@ html {
     font-size: 24px;
 }
 
-input-rating {
+[data-rating] {
     display: flex;
     background: red;
 
-    &:hover >div {
+    [data-rating-star] {
+        height: 1rem;
+        width: 1rem;
+    }
+
+    [data-rating-star="full"] {
+        background: url('../../images/star-full.svg');
+    }
+
+    [data-rating-star="empty"] {
+        background: url('../../images/star-empty.svg');
+    }
+
+    /*&:hover >div {
         background: url('../../images/star-full.svg') !important;
         background-repeat: no-repeat;
     }
@@ -42,5 +55,5 @@ input-rating {
         >div {
             background: url('../../images/star-empty.svg');
         }
-    }
+    }*/
 }

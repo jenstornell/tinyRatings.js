@@ -24,13 +24,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
         'ratingSelector': '[data-rating]'
     });
 
-    var element = document.querySelector('.haha');
+    /*var element = document.querySelector('.haha');
     
     tinyRatings.set(element, 4);
 
     var element = document.querySelectorAll('.haha');
 
-    tinyRatings.clear(element);
+    tinyRatings.clear(element);*/
 });
 </script>
 

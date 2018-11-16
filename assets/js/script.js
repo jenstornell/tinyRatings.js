@@ -9,6 +9,7 @@ var tinyRatings = (function () {
         fn.convertRatings();
 
         fn.eventClick();
+        fn.eventHover();
     };
 
     // Defaults
@@ -18,39 +19,81 @@ var tinyRatings = (function () {
         };
     };
 
-    fn.html = function() {
-        var html = '';
-        for(i=0; i<5; i++) {
-            html += "<div></div>";
-        }
-        return html;
-    };
-
+    // Convert ratings
     fn.convertRatings = function() {
-        var html = fn.html();
-        var htmlElement = new DOMParser().parseFromString(fn.html(), "text/html").body.cloneNode;
-
-        //console.log(htmlStars);
-
-        for(i=0; i<fn.elements.length; i++) {
+        for(let i=0; i<fn.elements.length; i++) {
             var element = fn.elements[i];
             var rating = element.dataset.rating;
 
-            console.log(htmlElement);
+            fn.convertRating(element, rating, 5);
+        }
+    };
 
-            element.appendChild(htmlElement);
+    // Convert rating
+    fn.convertRating = function(element, rating, count) {
+        while (element.firstChild) {
+            element.firstChild.remove();
+        }
 
-            //fn.elementToHtml(element, rating);
+        for(let i=0; i<count; i++) {
+            let star = document.createElement("div");
+            if(rating > i) {
+                star.dataset.ratingStar = 'full';
+            } else {
+                star.dataset.ratingStar = 'empty';
+            }
+
+            element.appendChild(star);
         }
     };
 
     // elementToHtml
-    fn.elementToHtml = function(element, rating) {
+    /*fn.elementToHtml = function(element, rating) {
         if(rating != 0) {
             var child = element.querySelector('.rating >div:nth-child(' + rating + ')');
             child.classList.add('active');
         }
         element.dataset.rating = rating;
+    };*/
+
+    fn.eventHover = function() {
+        for(i=0; i<fn.elements.length; i++) {
+            var element = fn.elements[i];
+            element.addEventListener('mouseover', function(event, index) {
+                console.log(event.target);
+
+                var element = event.target;
+
+                element.dataset.ratingStar = 'full';
+
+                while(element) {
+                    element = element.previousElementSibling;
+                    if(!element) break;
+                    element.dataset.ratingStar = 'full';
+                }
+
+                var element = event.target;
+
+                while(element) {
+                    element = element.nextElementSibling;
+                    if(!element) break;
+                    element.dataset.ratingStar = 'empty';
+                }
+
+                //https://gomakethings.com/how-to-get-all-sibling-elements-until-a-match-is-found-with-vanilla-javascript/
+
+                fn.setStars.bind(element);
+            });
+            element.addEventListener('mouseleave', function(event) {
+                console.log(event);
+                fn.setStars.bind(element);
+                fn.convertRating(element, 1, 5);
+            });
+        } 
+    };
+
+    fn.setStars = function(element) {
+        console.log(element);
     };
 
     fn.eventClick = function() {
@@ -66,7 +109,7 @@ var tinyRatings = (function () {
         }
     };
 
-    fn.setRating = function(elementStar, i) {
+    /*fn.setRating = function(elementStar, i) {
         var element = elementStar.parentNode;
         var index = Array.from(element.children).indexOf(elementStar);
         var new_rating = index + 1;
@@ -77,7 +120,7 @@ var tinyRatings = (function () {
         if(new_rating != old_rating) {
             fn.elementToHtml(element, new_rating);
         }
-    };
+    };*/
 
     // Clear element
     fn.clearElement = function(element) {
