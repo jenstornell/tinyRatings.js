@@ -10,28 +10,23 @@
 </head>
 <body>
 
-<div class="rating" data-rating="3" data-rating-enabled="false"></div>
+<t-rating value="0"></t-rating>
 
 <br>
 
-<input-rating data-rating="4"></input-rating>
+<t-rating value="4"></t-rating>
 
-<script src="assets/js/script.js?t=<?= time(); ?>"></script>
+<script src="assets/js/tinyRatings.js?t=<?= time(); ?>"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(event) {
     tinyRatings.init({
-        'ratingSelector': '[data-rating]'
+        callback: function() {
+            console.log('test');
+        }
     });
 
-    /*var element = document.querySelector('.haha');
-    
-    tinyRatings.set(element, 4);
-
-    var element = document.querySelectorAll('.haha');
-
-    tinyRatings.clear(element);*/
-});
+    //var el = document.querySelector('t-rating');
+    //tinyRatings.clear(el);
 </script>
 
 </body>

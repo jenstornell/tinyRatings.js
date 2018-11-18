@@ -31,11 +31,11 @@ By adding `data-rating-enabled` to `false`, the stars will be disabled. The defa
 To not repeat myself all the examples below uses this pattern.
 
 ```html
-<div class="rating" id="my-special-rating" data-rating="3"></div>
+<t-rating value="3"></t-rating>
 
 <script>
-tinystarratings.init({
-    'selector': '.rating'
+tinyRatings.init({
+    'prefix': 't'
 });
 
 var element = document.querySelector('#my-special-rating');
@@ -57,5 +57,13 @@ tinystarratings.elementToHtml(element, 5);
 If you want to clear an element from stars, use the method `clear` like below.
 
 ```js
-tinystarratings.clear(element);
+tinyRatings.clear(element);
 ```
+
+## Donate
+
+Donate to [DevoneraAB](https://www.paypal.me/DevoneraAB) if you want.
+
+## License
+
+MIT

@@ -35,20 +35,21 @@ var tinyRatings = (function () {
             element.firstChild.remove();
         }
 
+        let wrap = document.createElement("div");
+        wrap.dataset.ratingWrap = '';
+        element.appendChild(wrap);
+
+        let wrapper = element.querySelector('[data-rating-wrap]');
+
         for(let i=0; i<5; i++) {
             let star = document.createElement("div");
-            if(rating > i) {
-                star.dataset.ratingStar = 'full';
-            } else {
-                star.dataset.ratingStar = 'empty';
-            }
-
-            element.appendChild(star);
+            star.dataset.ratingStar = rating > i ? 'full' : 'empty';
+            wrapper.appendChild(star);
         }
     };
 
     // EVENT - Hover
-1   
+   
     fn.eventHover = function() {
         for(let i=0; i<fn.elements.length; i++) {
             var element = fn.elements[i];
@@ -61,55 +62,51 @@ var tinyRatings = (function () {
     // EVENT - Mouseleave
 
     fn.eventMouseleave = function(element) {
-        element.addEventListener('mouseleave', function(event) {
+        element.querySelector('[data-rating-wrap]').addEventListener('mouseleave', function(event) {
             var element = event.target;
 
-            fn.convertRating(element, element.dataset.rating);
+            //fn.convertRating(element, element.dataset.rating);
+            //var star = element.children.firstChild.children.firstChild;
+            //console.log(star);
+            //fn.setStars(star, 1);
         });
     };
 
     // EVENT - Mouseover
 
     fn.eventMouseover = function(element) {
-        element.addEventListener('mouseover', function(event, index) {
-            var element = event.target;
-            var children = element.parentNode.children;
-            var index = Array.from(children).indexOf(element);
-
-            for(let i=0; i<5; i++) {
-                var dataset = children[i].dataset;
-                if(i <= index) {
-                    dataset.ratingStar = 'full';
-                } else {
-                    dataset.ratingStar = 'empty';
-                }
-            }
+        element.querySelector('[data-rating-wrap]').addEventListener('mouseover', function(event, index) {
+            fn.setStars(event.target);
         });
+    };
+
+    // Set stars
+
+    fn.setStars = function(element) {
+        var children = element.parentNode.children;
+        var index = fn.index(element);
+
+        for(let i=0; i<5; i++) {
+            var dataset = children[i].dataset;
+            dataset.ratingStar = (i <= index) ? 'full' : 'empty';
+        }
     };
 
     // EVENT - Click
 
     fn.eventClick = function() {
-        var elements = document.querySelectorAll(o.ratingSelector);
+        //var elements = document.querySelectorAll(o.ratingSelector);
 
-        for(let i=0; i<elements.length; i++) {
-            var element = elements[i];
+        for(let i=0; i<fn.elements.length; i++) {
+            var element = fn.elements[i];
 
-            console.log(element);
-
-            element.addEventListener('click', function(event) {
+            element.querySelector('[data-rating-wrap]').addEventListener('mousedown', function(event) {
                 var star = event.target;
-                var parent = event.target.parentNode;
+                var parent = star.parentNode.parentNode;
 
-                var index = fn.index(star);
-                console.log(index);
+                parent.dataset.rating = fn.index(star) + 1;
 
-                parent.dataset.rating = index + 1;
-
-                fn.convertRating(parent, index);
-                /*console.log(event.target);
-                parent.dataset.rating = index;
-                fn.convertRating(parent, i);*/
+                fn.setStars(star);
             });
         }
     };
@@ -118,44 +115,6 @@ var tinyRatings = (function () {
     fn.index = function(element) {
         var children = element.parentNode.children;
         return Array.from(children).indexOf(element);
-    };
-
-    /*fn.setRating = function(elementStar, i) {
-        var element = elementStar.parentNode;
-        var index = Array.from(element.children).indexOf(elementStar);
-        var new_rating = index + 1;
-        var old_rating = element.dataset.rating;
-
-        fn.clear(element);
-
-        if(new_rating != old_rating) {
-            fn.elementToHtml(element, new_rating);
-        }
-    };*/
-
-    // Clear element
-    fn.clearElement = function(element) {
-        var elementStars = element.querySelectorAll('*>div');
-        for(let i=0; i<elementStars.length; i++) {
-            elementStars[i].className = '';
-        }
-
-        fn.elementToHtml(element, 0);
-    };
-
-    // Clear elements
-    fn.clearElements = function(elements) {
-        for(let i=0; i<elements.length; i++) {
-            fn.clearElement(elements[i]);
-        }
-    };
-
-    // Clear
-    fn.clear = function(data) {
-        if(data.length > 0) 
-            fn.clearElements(data);
-        else
-            fn.clearElement(data);
     };
 
     return fn;

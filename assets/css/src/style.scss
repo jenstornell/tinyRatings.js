@@ -2,58 +2,57 @@ html {
     font-size: 24px;
 }
 
-[data-rating] {
+$full: '../../images/star-full.svg';
+$empty: '../../images/star-empty.svg';
+$prefix: 't';
+
+#{$prefix}-rating[value] {
     display: flex;
-    background: red;
 
-    [data-rating-star] {
-        height: 1rem;
-        width: 1rem;
-    }
+    t-wrap {
+        display: flex;
 
-    [data-rating-star="full"] {
-        background: url('../../images/star-full.svg');
-    }
-
-    [data-rating-star="empty"] {
-        background: url('../../images/star-empty.svg');
-    }
-
-    /*&:hover >div {
-        background: url('../../images/star-full.svg') !important;
-        background-repeat: no-repeat;
-    }
-
-    >div {
-        background: green;
-        height: 1rem;
-        width: 1rem;
-        background: url('../../images/star-full.svg');
-
-        &:hover ~ div {
-            background: url('../../images/star-empty.svg') !important;
-        }
-
-        &.active ~ div {
-            background: url('../../images/star-empty.svg');
-        }
-    }
-
-    &[data-rating-enabled="false"] {
         >div {
-            &:hover ~ div {
-                background: url('../../images/star-full.svg') !important;
-            }
+            height: 1rem;
+            width: 1rem;
 
-            &.active ~ div {
-                background: url('../../images/star-empty.svg') !important;
+            background: url($full);
+        }
+    }
+
+    // No rating
+    &[value="0"] {
+        t-wrap {
+            >div {
+                background: url($empty);
             }
         }
     }
 
-    &[data-rating="0"] {
-        >div {
-            background: url('../../images/star-empty.svg');
+    // Fill
+    [data-rating-active] {
+        background: url($full);
+
+        &~div {
+            background: url($empty);
         }
-    }*/
+    }
+
+    // Hover
+    #{$prefix}-wrap {
+        &:hover {
+            >div {
+                background: url($full);
+            }
+        }
+    }
+
+    #{$prefix}-wrap {
+        >div:hover {
+            background: url($full);
+            &~ div {
+                background: url($empty);
+            }
+        }
+    }
 }
