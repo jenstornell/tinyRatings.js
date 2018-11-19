@@ -4,12 +4,12 @@ html {
 
 $full: '../../images/star-full.svg';
 $empty: '../../images/star-empty.svg';
-$prefix: 't';
+$prefix: 'tr';
 
 #{$prefix}-rating[value] {
     display: flex;
 
-    t-wrap {
+    #{$prefix}-wrap {
         display: flex;
 
         >div {
@@ -22,7 +22,7 @@ $prefix: 't';
 
     // No rating
     &[value="0"] {
-        t-wrap {
+        #{$prefix}-wrap {
             >div {
                 background: url($empty);
             }

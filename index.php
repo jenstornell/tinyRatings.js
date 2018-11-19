@@ -10,16 +10,17 @@
 </head>
 <body>
 
-<t-rating value="0"></t-rating>
+<tr-rating value="0"></tr-rating>
 
 <br>
 
-<t-rating value="4"></t-rating>
+<tr-rating value="4"></tr-rating>
 
 <script src="assets/js/tinyRatings.js?t=<?= time(); ?>"></script>
 
 <script>
     tinyRatings.init({
+        stars: 8,
         callback: function() {
             console.log('test');
         }

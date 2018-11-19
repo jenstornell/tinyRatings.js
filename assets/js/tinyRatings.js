@@ -1,5 +1,7 @@
 // click same element - fn.set(element, 0);
 // Readme - Animated gif
+// Readme stars
+// Readme - prefox
 
 var tinyRatings = (function () {
     var fn = {};
@@ -17,7 +19,7 @@ var tinyRatings = (function () {
     // Default options
     fn.defaults = function() {
         return {
-            prefix: 't',
+            prefix: 'tr',
             stars: 5
         };
     };
@@ -40,7 +42,7 @@ var tinyRatings = (function () {
 
         var wrapper = element.querySelector(o.prefix + '-wrap');
 
-        for(let i=0; i<5; i++) {
+        for(let i=0; i<o.stars; i++) {
             let star = document.createElement("div");
             wrapper.appendChild(star);
         }

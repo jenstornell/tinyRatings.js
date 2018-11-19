@@ -1,23 +1,23 @@
 html {
   font-size: 24px; }
 
-t-rating[value] {
+tr-rating[value] {
   display: flex; }
-  t-rating[value] t-wrap {
+  tr-rating[value] tr-wrap {
     display: flex; }
-    t-rating[value] t-wrap > div {
+    tr-rating[value] tr-wrap > div {
       height: 1rem;
       width: 1rem;
       background: url("../../images/star-full.svg"); }
-  t-rating[value][value="0"] t-wrap > div {
+  tr-rating[value][value="0"] tr-wrap > div {
     background: url("../../images/star-empty.svg"); }
-  t-rating[value] [data-rating-active] {
+  tr-rating[value] [data-rating-active] {
     background: url("../../images/star-full.svg"); }
-    t-rating[value] [data-rating-active] ~ div {
+    tr-rating[value] [data-rating-active] ~ div {
       background: url("../../images/star-empty.svg"); }
-  t-rating[value] t-wrap:hover > div {
+  tr-rating[value] tr-wrap:hover > div {
     background: url("../../images/star-full.svg"); }
-  t-rating[value] t-wrap > div:hover {
+  tr-rating[value] tr-wrap > div:hover {
     background: url("../../images/star-full.svg"); }
-    t-rating[value] t-wrap > div:hover ~ div {
+    tr-rating[value] tr-wrap > div:hover ~ div {
       background: url("../../images/star-empty.svg"); }
