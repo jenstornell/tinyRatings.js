@@ -7,54 +7,77 @@
 To get the ratings of on a page, you need to set a selector.
 
 ```html
-<div class="rating" data-rating="3"></div>
+<tr-rating value="4"></tr-rating>
 
 <script>
-tinystarratings.init({
-    'selector': '.rating'
-});
+tinyRatings.init();
 </script>
 ```
 
-## Inline options
+## Script options
 
-### enabled (optional)
+### prefix
 
-By adding `data-rating-enabled` to `false`, the stars will be disabled. The default is `true`.
+By default all the elements needed are prefixed with `tr`. In case of collision, you can change it.
 
-```html
-<div class="rating" data-rating="3" data-rating-enabled="false"></div>
+```js
+tinyRatings.init({
+    prefix: 'tr'
+});
 ```
+
+*If you change this option, you also need to change your CSS file.*
+
+### stars
+
+By default you will get a 5 star rating component. If that is not what you want, you can change it.
+
+```js
+tinyRatings.init({
+    stars: 5
+});
+```
+
+### lock
+
+if you only want show the rating, but want to prevent the user from rating, you can change `lock` to `true`.
+
+```js
+tinyRatings.init({
+    lock: false
+});
+```
+
+### callback
+
+If you need to trigger something when a star is set, you can use the callback. It will give you the element and the rating.
+
+```js
+tinyRatings.init({
+    callback: function(element, rating) {
+        console.log(element);
+        console.log(rating);
+    }
+});
+```
+
+*The callback is only triggered if the user click a star, not if the rating is set programically.*
 
 ##  Methods
 
-To not repeat myself all the examples below uses this pattern.
-
-```html
-<t-rating value="3"></t-rating>
-
-<script>
-tinyRatings.init({
-    'prefix': 't'
-});
-
-var element = document.querySelector('#my-special-rating');
-
-/* JS METHOD GOES HERE */
-</script>
-```
+These methods require you to have the tinyRatings init function setup before they could run.
 
 ### elementToHtml
 
-You can force a rating with a method like below.
+You can force a rating with a method like below. The first argument is the element and the second argument is the rating.
 
 ```js
-tinystarratings.elementToHtml(element, 5);
+tinyRatings.set(element, 5);
 ```
 
 ### clear
 
-If you want to clear an element from stars, use the method `clear` like below.
+If you want to clear an element from stars, use the method `clear` like below. It's a shorthand for `tinyRatings.set(element, 0);`.
 
 ```js
 tinyRatings.clear(element);

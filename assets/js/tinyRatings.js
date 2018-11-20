@@ -12,6 +12,7 @@ var tinyRatings = (function () {
 
         document.addEventListener("DOMContentLoaded", function(event) {
             fn.createAll();
+            if(o.lock) return;
             fn.events();
         });
     };
@@ -20,7 +21,8 @@ var tinyRatings = (function () {
     fn.defaults = function() {
         return {
             prefix: 'tr',
-            stars: 5
+            stars: 5,
+            lock: false
         };
     };
 
@@ -30,6 +32,7 @@ var tinyRatings = (function () {
 
         elementRatings.forEach((element) => {
             let rating = element.getAttribute('value');
+            element.setAttribute('lock', "true");
             fn.create(element);
             fn.set(element, rating);
         });
@@ -68,11 +71,7 @@ var tinyRatings = (function () {
         let stars = element.querySelectorAll(o.prefix + '-wrap > div');
         var old_rating = element.getAttribute('value');
 
-        console.log(rating);
-        console.log(old_rating);
-
         rating = (clicked && old_rating == rating) ? 0 : rating;
-        //console.log(rating);
         element.setAttribute('value', rating);
 
         for(i=0; i<stars.length; i++) {

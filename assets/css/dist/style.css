@@ -21,3 +21,5 @@ tr-rating[value] {
     background: url("../../images/star-full.svg"); }
     tr-rating[value] tr-wrap > div:hover ~ div {
       background: url("../../images/star-empty.svg"); }
+  tr-rating[value][lock="true"]:hover > div {
+    background: red !important; }

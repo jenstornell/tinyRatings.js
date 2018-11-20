@@ -55,4 +55,10 @@ $prefix: 'tr';
             }
         }
     }
+
+    &[lock="true"] {
+        &:hover > div {
+            background: red !important;
+        }
+    }
 }

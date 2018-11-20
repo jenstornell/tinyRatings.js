@@ -21,6 +21,7 @@
 <script>
     tinyRatings.init({
         stars: 8,
+        lock: true,
         callback: function() {
             console.log('test');
         }
