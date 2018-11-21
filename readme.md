@@ -4,7 +4,7 @@
 
 Really small rating star element with zero dependencies.
 
-![Tiny Ratings](tinyratings.gif)
+![Tiny Ratings](preview.gif)
 
 ## In short
 
