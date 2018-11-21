@@ -15,11 +15,9 @@ tr-rating[value] {
     background: url("../../images/star-full.svg"); }
     tr-rating[value] [data-rating-active] ~ div {
       background: url("../../images/star-empty.svg"); }
-  tr-rating[value] tr-wrap:hover > div {
+  tr-rating[value][lock="false"] tr-wrap:hover > div {
     background: url("../../images/star-full.svg"); }
-  tr-rating[value] tr-wrap > div:hover {
+  tr-rating[value][lock="false"] tr-wrap > div:hover {
     background: url("../../images/star-full.svg"); }
-    tr-rating[value] tr-wrap > div:hover ~ div {
+    tr-rating[value][lock="false"] tr-wrap > div:hover ~ div {
       background: url("../../images/star-empty.svg"); }
-  tr-rating[value][lock="true"]:hover > div {
-    background: red !important; }

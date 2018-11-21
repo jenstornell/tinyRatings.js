@@ -1,8 +1,3 @@
-// click same element - fn.set(element, 0);
-// Readme - Animated gif
-// Readme stars
-// Readme - prefox
-
 var tinyRatings = (function () {
     var fn = {};
     var o = {};
@@ -32,7 +27,7 @@ var tinyRatings = (function () {
 
         elementRatings.forEach((element) => {
             let rating = element.getAttribute('value');
-            element.setAttribute('lock', "true");
+            element.setAttribute('lock', o.lock);
             fn.create(element);
             fn.set(element, rating);
         });

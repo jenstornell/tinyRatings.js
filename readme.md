@@ -1,20 +1,43 @@
-# TinyStarRatings
+# tinyRatings.js
 
-## Global options
+*Version 1.0*
 
-### selector
+Really small rating star element with zero dependencies.
 
-To get the ratings of on a page, you need to set a selector.
+## In short
+
+- Only 1kb
+- Vanilla JS
+- Zero dependencies
+- Super simple setup
+- Callback support
+
+## Usage
+
+It just can't get any simpler than this. There is also an example in `index.html`.
+
+### CSS
+
+```html
+<link rel="stylesheet" href="assets/css/dist/style.min.css">
+```
+
+### HTML
 
 ```html
 <tr-rating value="4"></tr-rating>
+```
 
+### JS
+
+```html
+<script src="assets/js/tinyRatings.min.js"></script>
 <script>
-tinyRatings.init();
+    tinyRatings.init();
 </script>
 ```
 
-## Script options
+## Global options
 
 ### prefix
 

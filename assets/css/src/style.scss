@@ -38,27 +38,23 @@ $prefix: 'tr';
         }
     }
 
-    // Hover
-    #{$prefix}-wrap {
-        &:hover {
-            >div {
+    &[lock="false"] {
+        // Hover
+        #{$prefix}-wrap {
+            &:hover {
+                >div {
+                    background: url($full);
+                }
+            }
+        }
+
+        #{$prefix}-wrap {
+            >div:hover {
                 background: url($full);
+                &~ div {
+                    background: url($empty);
+                }
             }
-        }
-    }
-
-    #{$prefix}-wrap {
-        >div:hover {
-            background: url($full);
-            &~ div {
-                background: url($empty);
-            }
-        }
-    }
-
-    &[lock="true"] {
-        &:hover > div {
-            background: red !important;
         }
     }
 }
