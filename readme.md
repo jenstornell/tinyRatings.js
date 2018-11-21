@@ -4,6 +4,8 @@
 
 Really small rating star element with zero dependencies.
 
+![Tiny Ratings](tinyratings.gif)
+
 ## In short
 
 - Only 1kb
@@ -90,7 +92,7 @@ tinyRatings.init({
 
 These methods require you to have the tinyRatings init function setup before they could run.
 
-### elementToHtml
+### set
 
 You can force a rating with a method like below. The first argument is the element and the second argument is the rating.
 
@@ -100,11 +102,13 @@ tinyRatings.set(element, 5);
 
 ### clear
 
-If you want to clear an element from stars, use the method `clear` like below. It's a shorthand for `tinyRatings.set(element, 0);`.
+If you want to clear an element from stars, use the method `clear` like below.
 
 ```js
 tinyRatings.clear(element);
 ```
+
+The code above is a shorthand for `tinyRatings.set(element, 0);`.
 
 ## Donate
 
